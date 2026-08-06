@@ -1,0 +1,347 @@
+/* ===============================
+   DASHBOARD
+================================== */
+
+.dashboard-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.dashboard-page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #273240;
+  margin: 0;
+}
+
+.change-period {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: .3s;
+  box-shadow: 0 4px 18px rgba(0,0,0,.04);
+}
+
+.change-period:hover {
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+.change-period span:first-child {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff7857;
+  font-size: 18px;
+}
+
+.change-period strong {
+  display: block;
+  font-size: 14px;
+  color: #273240;
+}
+
+.change-period small {
+  display: block;
+  color: #888;
+  font-size: 12px;
+}
+
+.change-period span:last-child {
+  color: #777;
+  font-size: 18px;
+}
+
+/* ===============================
+   STAT CARDS
+================================== */
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.dashboard-stat-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.04);
+  transition: .3s;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.dashboard-stat-icon.orange {
+  background: linear-gradient(135deg,#ff8d62,#ff6d4b);
+}
+
+.dashboard-stat-icon.blue {
+  background: linear-gradient(135deg,#53b8ff,#3b82f6);
+}
+
+.dashboard-stat-icon.purple {
+  background: linear-gradient(135deg,#7c5cff,#9069ff);
+}
+
+.dashboard-stat-icon.pink {
+  background: linear-gradient(135deg,#ff73b5,#ff5d91);
+}
+
+.dashboard-stat-card strong {
+  display: block;
+  font-size: 26px;
+  color: #273240;
+  margin-bottom: 5px;
+}
+
+.dashboard-stat-card span {
+  color: #999;
+  font-size: 14px;
+}
+
+/* ===============================
+ MAIN GRID
+================================== */
+
+.dashboard-main-grid {
+  display: grid;
+  grid-template-columns: 2.3fr .95fr;
+  gap: 24px;
+}
+
+.dashboard-center {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboard-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===============================
+ COMMON CARD
+================================== */
+
+.dashboard-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.04);
+}
+
+.dashboard-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.dashboard-card-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #273240;
+}
+
+.dashboard-card-header p {
+  margin-top: 4px;
+  color: #9da3b4;
+  font-size: 13px;
+}
+
+.dashboard-card-header select {
+  border: 1px solid #ececec;
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: #555;
+  outline: none;
+}
+
+.dots {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: #f6f7fb;
+  cursor: pointer;
+}
+
+/* ===============================
+ TWO COLUMN
+================================== */
+
+.dashboard-two-column {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* ===============================
+ PROJECT GRAPH
+================================== */
+
+.project-chart {
+  display: flex;
+  gap: 18px;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #aaa;
+  font-size: 12px;
+  padding-bottom: 22px;
+}
+
+.project-chart-area {
+  flex: 1;
+  position: relative;
+}
+
+.chart-grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chart-grid span {
+  display: block;
+  border-top: 1px dashed #ececec;
+}
+
+.project-svg {
+  width: 100%;
+  height: 240px;
+  position: relative;
+  z-index: 2;
+}
+
+.chart-days {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #888;
+}
+
+/* ===============================
+ EMAIL CARD
+================================== */
+
+.email-stat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-donut {
+  width: 180px;
+  height: 180px;
+  margin: auto;
+  border-radius: 50%;
+  background:
+  conic-gradient(
+  #ff845d 0deg 180deg,
+  #ffd86b 180deg 270deg,
+  #6f6cff 270deg 330deg,
+  #ff6ba3 330deg 360deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-donut-inner {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-donut-inner strong {
+  font-size: 28px;
+  color: #273240;
+}
+
+.email-donut-inner span {
+  color: #999;
+  font-size: 13px;
+}
+
+.email-stat-list {
+  margin-top: 24px;
+}
+
+.email-stat-list div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.email-stat-list span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.purple-dot {
+  background: #6f6cff;
+}
+
+.orange-dot {
+  background: #ff845d;
+}
+
+.blue-dot {
+  background: #57b8ff;
+}
+
+.pink-dot {
+  background: #ff73b5;
+}

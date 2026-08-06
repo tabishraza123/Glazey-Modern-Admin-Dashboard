@@ -1,203 +1,126 @@
+"use client";
+
+import "./../../css/contacts.css";
 import AdminLayout from "../../(auth)/components/AdminLayout";
 
 const contacts = [
   {
-    name: "Samantha William",
-    role: "Marketing Manager",
-    email: "samantha@gmail.com",
-    phone: "+1 234 567 890",
-    initials: "SW",
+    id: 1,
+    name: "Jordana Nicolany",
+    phone: "+1234567890",
+    email: "jordan@gmail.com",
   },
   {
-    name: "Tony Soap",
-    role: "Product Manager",
-    email: "tonysoap@gmail.com",
-    phone: "+1 234 567 891",
-    initials: "TS",
+    id: 2,
+    name: "Jacob Jack",
+    phone: "+1234567890",
+    email: "jacob@gmail.com",
   },
   {
-    name: "Karen Hope",
-    role: "UI/UX Designer",
-    email: "karenhope@gmail.com",
-    phone: "+1 234 567 892",
-    initials: "KH",
-  },
-  {
+    id: 3,
     name: "Jordan Nico",
-    role: "Developer",
-    email: "jordannico@gmail.com",
-    phone: "+1 234 567 893",
-    initials: "JN",
+    phone: "+1234567890",
+    email: "victor@gmail.com",
   },
   {
-    name: "Nadila Adja",
-    role: "Project Manager",
-    email: "nadilaadja@gmail.com",
-    phone: "+1 234 567 894",
-    initials: "NA",
+    id: 4,
+    name: "Gibs Gibsy",
+    phone: "+1234567890",
+    email: "gibs@gmail.com",
   },
   {
-    name: "Kevin Ard",
-    role: "Web Developer",
-    email: "kevinard@gmail.com",
-    phone: "+1 234 567 895",
-    initials: "KA",
+    id: 5,
+    name: "Sam Sammy",
+    phone: "+1234567890",
+    email: "sam@gmail.com",
   },
   {
-    name: "Exco Libur",
-    role: "Marketing Manager",
-    email: "excolibur@gmail.com",
-    phone: "+1 234 567 896",
-    initials: "EL",
+    id: 6,
+    name: "Corey Core",
+    phone: "+1234567890",
+    email: "corey@gmail.com",
   },
   {
-    name: "John Smith",
-    role: "Product Designer",
-    email: "johnsmith@gmail.com",
-    phone: "+1 234 567 897",
-    initials: "JS",
+    id: 7,
+    name: "Arca Sodara",
+    phone: "+1234567890",
+    email: "arca@gmail.com",
   },
   {
-    name: "Alex Morgan",
-    role: "Frontend Developer",
-    email: "alexmorgan@gmail.com",
-    phone: "+1 234 567 898",
-    initials: "AM",
+    id: 8,
+    name: "Ken Smith",
+    phone: "+1234567890",
+    email: "ken@gmail.com",
+  },
+  {
+    id: 9,
+    name: "Johnny Ahmad",
+    phone: "+1234567890",
+    email: "johnny@gmail.com",
   },
 ];
 
-export default function ContactsPage() {
+export default function ContactPage() {
   return (
     <AdminLayout>
 
-      {/* PAGE HEADER */}
+      <div className="contact-header">
 
-      <div className="contacts-page-header">
+        <h1>Contact</h1>
 
-        <div>
-          <h1>Contacts</h1>
+        <div className="contact-actions">
 
-          <p>
-            Manage your contacts and team members
-          </p>
-        </div>
-
-        <button className="add-contact-button">
-          + Add Contact
-        </button>
-
-      </div>
-
-
-      {/* CONTACT TOOLBAR */}
-
-      <div className="contacts-toolbar">
-
-        <div className="contacts-search">
-
-          <span>⌕</span>
-
-          <input
-            type="text"
-            placeholder="Search contacts..."
-          />
-
-        </div>
-
-
-        <div className="contacts-filter">
-
-          <button>
-            All Contacts ⌄
+          <button className="layout-btn">
+            ☷
           </button>
 
-          <button>
-            Sort By ⌄
+          <button className="layout-btn active">
+            ⊞
+          </button>
+
+          <button className="new-contact-btn">
+            + New Contact
           </button>
 
         </div>
 
       </div>
 
+      <div className="contact-grid">
 
-      {/* CONTACT GRID */}
-
-      <div className="contacts-grid">
-
-        {contacts.map((contact) => (
+        {contacts.map((item) => (
 
           <div
             className="contact-card"
-            key={contact.email}
+            key={item.id}
           >
 
-            {/* MENU */}
+            <div className="contact-top">
 
-            <button className="contact-menu">
-              •••
-            </button>
+              <div className="contact-avatar"></div>
 
+              <button className="more-btn">
+                •••
+              </button>
 
-            {/* AVATAR */}
-
-            <div className="contact-large-avatar">
-              {contact.initials}
             </div>
 
+            <div className="online-dot"></div>
 
-            {/* NAME */}
+            <h3>{item.name}</h3>
 
-            <h3>
-              {contact.name}
-            </h3>
-
-            <span className="contact-role">
-              {contact.role}
+            <span className="phone">
+              {item.phone}
             </span>
 
+            <p>{item.email}</p>
 
-            {/* CONTACT INFO */}
+            <div className="contact-icons">
 
-            <div className="contact-info">
-
-              <div>
-                <span>✉</span>
-
-                <p>
-                  {contact.email}
-                </p>
-              </div>
-
-              <div>
-                <span>☎</span>
-
-                <p>
-                  {contact.phone}
-                </p>
-              </div>
-
-            </div>
-
-
-            {/* ACTIONS */}
-
-            <div className="contact-actions">
-
-              <button>
-                ✉
-              </button>
-
-              <button>
-                ☎
-              </button>
-
-              <button>
-                ◉
-              </button>
-
-              <button>
-                ⋮
-              </button>
+              <button>📞</button>
+              <button>✉</button>
+              <button>💬</button>
+              <button>🎥</button>
 
             </div>
 
@@ -207,45 +130,23 @@ export default function ContactsPage() {
 
       </div>
 
-
-      {/* PAGINATION */}
-
-      <div className="contacts-pagination">
+      <div className="contact-footer">
 
         <span>
-          Showing 1-9 from 100 contacts
+          Showing 1-9 from 100 data
         </span>
 
+        <div className="pagination">
 
-        <div>
+          <button>{"<"}</button>
 
-          <button>
-            ‹
-          </button>
-
-          <button className="contacts-page-active">
-            1
-          </button>
-
-          <button>
+          <button className="active">
             2
           </button>
 
-          <button>
-            3
-          </button>
+          <button>3</button>
 
-          <button>
-            4
-          </button>
-
-          <button>
-            5
-          </button>
-
-          <button>
-            ›
-          </button>
+          <button>{">"}</button>
 
         </div>
 

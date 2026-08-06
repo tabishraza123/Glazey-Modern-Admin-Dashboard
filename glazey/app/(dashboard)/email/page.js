@@ -1,83 +1,80 @@
+"use client";
+
+import "./../../css/email.css";
 import AdminLayout from "../../(auth)/components/AdminLayout";
+
+const folders = [
+  "Inbox",
+  "Sent",
+  "Favorite",
+  "Draft",
+  "Important",
+  "Scheduled",
+  "More",
+];
+
+const categories = [
+  "Work",
+  "Side Project",
+];
+
+const tags = [
+  "#projectmanagement",
+  "#teamwork",
+  "#design",
+  "#weeklymeetings",
+];
 
 const emails = [
   {
     id: 1,
-    name: "ravi@gmail.com",
-    time: "24 min ago",
-    subject: "How to manage your working time in this pandemic",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    star: true,
     checked: false,
-    starred: true,
+    subject: "How to manage your working time in this pandemic",
+    from: "kevinharris@gmail.com",
+    time: "24 min ago",
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    labels: ["Master Plan", "Cover Preview.jpg", "4 files more"],
   },
   {
     id: 2,
-    name: "sumit@gmail.com",
-    time: "24 min ago",
-    subject: "How to manage your working time in this pandemic",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    star: false,
     checked: true,
-    starred: false,
+    subject: "How to manage your working time in this pandemic",
+    from: "kevinharris@gmail.com",
+    time: "24 min ago",
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    labels: ["Master Plan", "Cover Preview.jpg"],
   },
   {
     id: 3,
-    name: "aryan@gmail.com",
-    time: "24 min ago",
-    subject: "How to manage your working time in this pandemic",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    star: true,
     checked: false,
-    starred: true,
+    subject: "How to manage your working time in this pandemic",
+    from: "kevinharris@gmail.com",
+    time: "24 min ago",
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    labels: ["Master Plan"],
   },
   {
     id: 4,
-    name: "vishu@gmail.com",
-    time: "24 min ago",
-    subject: "How to manage your working time in this pandemic",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    star: false,
     checked: true,
-    starred: false,
+    subject: "How to manage your working time in this pandemic",
+    from: "kevinharris@gmail.com",
+    time: "24 min ago",
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    labels: ["Master Plan", "Cover Preview.jpg"],
   },
   {
     id: 5,
-    name: "hasib@gmail.com",
-    time: "24 min ago",
-    subject: "How to manage your working time in this pandemic",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    star: true,
     checked: false,
-    starred: true,
-  },
-];
-
-const folders = [
-  {
-    name: "Inbox",
-    icon: "▣",
-    count: "2",
-    active: true,
-  },
-  {
-    name: "Sent",
-    icon: "➤",
-  },
-  {
-    name: "Favorite",
-    icon: "☆",
-  },
-  {
-    name: "Draft",
-    icon: "▱",
-  },
-  {
-    name: "Important",
-    icon: "◉",
-  },
-  {
-    name: "Scheduled",
-    icon: "◷",
-  },
-  {
-    name: "More",
-    icon: "⌄",
+    subject: "How to manage your working time in this pandemic",
+    from: "kevinharris@gmail.com",
+    time: "24 min ago",
+    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    labels: ["Master Plan", "Cover Preview.jpg", "4 files more"],
   },
 ];
 
@@ -85,120 +82,60 @@ export default function EmailPage() {
   return (
     <AdminLayout>
 
-      {/* Page Header */}
-
-      <div className="email-page-header">
-
-        <h1>Email</h1>
-
-      </div>
-
-
-      {/* Email Layout */}
+      <h1 className="email-page-title">
+        Email
+      </h1>
 
       <div className="email-layout">
 
-        {/* LEFT EMAIL SIDEBAR */}
+        {/* LEFT */}
 
         <aside className="email-sidebar">
 
-          <button className="compose-button">
+          <button className="compose-btn">
             Compose Email
           </button>
 
+          <div className="folder-list">
 
-          {/* Folders */}
-
-          <div className="email-folders">
-
-            {folders.map((folder) => (
+            {folders.map((item, index) => (
 
               <div
-                key={folder.name}
-                className={`email-folder ${
-                  folder.active
-                    ? "email-folder-active"
-                    : ""
+                key={item}
+                className={`folder-item ${
+                  index === 0 ? "active" : ""
                 }`}
               >
+                <span>{item}</span>
 
-                <span className="email-folder-icon">
-                  {folder.icon}
-                </span>
-
-                <span>
-                  {folder.name}
-                </span>
-
-                {folder.count && (
-                  <b>
-                    {folder.count}
-                  </b>
-                )}
-
+                {index === 0 && <b>2</b>}
               </div>
 
             ))}
 
           </div>
 
+          <div className="sidebar-block">
 
-          {/* Categories */}
+            <h4>Categories</h4>
 
-          <div className="email-category-section">
-
-            <h4>
-              Categories
-            </h4>
-
-            <div className="email-category">
-
-              <span className="category-work">
-                ◇
-              </span>
-
-              Work
-
-            </div>
-
-            <div className="email-category">
-
-              <span className="category-side">
-                ◇
-              </span>
-
-              Side Project
-
-            </div>
+            {categories.map((cat) => (
+              <div className="category-item" key={cat}>
+                {cat}
+              </div>
+            ))}
 
           </div>
 
+          <div className="sidebar-block">
 
-          {/* Tags */}
+            <h4>Tags</h4>
 
-          <div className="email-tags-section">
+            <div className="tag-list">
 
-            <h4>
-              Tags
-            </h4>
-
-            <div className="email-tags">
-
-              <span>
-                #projectmanagement
-              </span>
-
-              <span>
-                #teamwork
-              </span>
-
-              <span>
-                #design
-              </span>
-
-              <span>
-                #weeklymeeting
-              </span>
+              {tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
 
             </div>
 
@@ -206,178 +143,96 @@ export default function EmailPage() {
 
         </aside>
 
-
-        {/* EMAIL CONTENT */}
+        {/* RIGHT */}
 
         <section className="email-content">
 
-          {/* Email Toolbar */}
-
           <div className="email-toolbar">
 
-            <div className="email-tabs">
+            <div className="toolbar-left">
 
-              <button className="email-tab-active">
-                □
-              </button>
+              <input type="checkbox" />
 
-              <button>
-                ▣ Important
-              </button>
-
-              <button>
-                ▧ Socials
-              </button>
-
-              <button>
-                ▤ Promotion
-              </button>
+              <button>Important</button>
+              <button>Socials</button>
+              <button>Promotion</button>
 
             </div>
 
+            <div className="toolbar-right">
 
-            <div className="email-actions">
-
-              <button>
-                ▱
-              </button>
-
-              <button>
-                ↶
-              </button>
-
-              <button>
-                ◉
-              </button>
-
-              <button>
-                ♙
-              </button>
-
-              <button>
-                •••
-              </button>
+              <button>🗑</button>
+              <button>✉</button>
+              <button>⚙</button>
+              <button>⋯</button>
 
             </div>
 
           </div>
 
-
-          {/* Email List */}
-
           <div className="email-list">
 
-            {emails.map((email) => (
+            {emails.map((mail) => (
 
               <div
-                className="email-row"
-                key={email.id}
+                className="email-item"
+                key={mail.id}
               >
 
-                {/* Checkbox */}
+                <div className="email-left">
 
-                <div className="email-checkbox">
+                  <input
+                    type="checkbox"
+                    defaultChecked={mail.checked}
+                  />
 
-                  <span
-                    className={
-                      email.checked
-                        ? "checked"
-                        : ""
-                    }
-                  >
-                    {email.checked
-                      ? "✓"
-                      : ""}
+                  <span className="star">
+                    {mail.star ? "★" : "☆"}
                   </span>
 
+                  <div className="avatar"></div>
+
                 </div>
 
+                <div className="email-body">
 
-                {/* Star */}
+                  <div className="email-head">
 
-                <div
-                  className={`email-star ${
-                    email.starred
-                      ? "star-active"
-                      : ""
-                  }`}
-                >
-                  ★
-                </div>
-
-
-                {/* Avatar */}
-
-                <div className="email-avatar">
-                  K
-                </div>
-
-
-                {/* Email Details */}
-
-                <div className="email-details">
-
-                  <div className="email-meta">
-
-                    <span>
-                      {email.name}
+                    <span className="from">
+                      {mail.from}
                     </span>
 
-                    <small>
-                      {email.time}
-                    </small>
+                    <span className="time">
+                      {mail.time}
+                    </span>
 
                   </div>
-
 
                   <h3>
-                    {email.subject}
+                    {mail.subject}
                   </h3>
 
-
                   <p>
-                    {email.text}
+                    {mail.text}
                   </p>
 
+                  <div className="mail-labels">
 
-                  <div className="email-labels">
-
-                    <span>
-                      ♧ Master_File
-                    </span>
-
-                    <span>
-                      ▣ CoverPreview
-                    </span>
-
-                    <span>
-                      4 files more
-                    </span>
+                    {mail.labels.map((label) => (
+                      <span key={label}>
+                        {label}
+                      </span>
+                    ))}
 
                   </div>
 
                 </div>
 
+                <div className="email-actions">
 
-                {/* Email Actions */}
-
-                <div className="email-row-actions">
-
-                  <button>
-                    ▣
-                  </button>
-
-                  <button>
-                    ◉
-                  </button>
-
-                  <button>
-                    ♧
-                  </button>
-
-                  <button>
-                    •••
-                  </button>
+                  <button>🗑</button>
+                  <button>⟳</button>
+                  <button>✎</button>
 
                 </div>
 
@@ -387,36 +242,23 @@ export default function EmailPage() {
 
           </div>
 
-
-          {/* Pagination */}
-
-          <div className="email-pagination">
+          <div className="email-footer">
 
             <span>
               Showing 1-5 from 100 data
             </span>
 
-            <div>
+            <div className="pagination">
 
-              <button>
-                ‹
-              </button>
+              <button>{"<"}</button>
 
-              <button>
-                1
-              </button>
-
-              <button className="pagination-active">
+              <button className="active">
                 2
               </button>
 
-              <button>
-                3
-              </button>
-              
-              <button>
-                ›
-              </button>
+              <button>3</button>
+
+              <button>{">"}</button>
 
             </div>
 

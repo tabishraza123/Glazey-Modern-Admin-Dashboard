@@ -1,5 +1,6 @@
 "use client";
 
+import "./../../css/dashboard.css";
 import AdminLayout from "../../(auth)/components/AdminLayout";
 
 const stats = [

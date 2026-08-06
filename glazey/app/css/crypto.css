@@ -1,0 +1,302 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f5f6fa;
+}
+
+.dashboard{
+    display:flex;
+    min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:250px;
+    background:#fff;
+    padding:30px 20px;
+    border-right:1px solid #eee;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#30336b;
+    margin-bottom:40px;
+}
+
+.logo span{
+    color:#ff6b6b;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 18px;
+    margin-bottom:8px;
+    color:#666;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.sidebar ul li:hover{
+    background:#f4f5ff;
+    color:#ff6b6b;
+}
+
+.sidebar ul li.active{
+    background:#fff0f0;
+    color:#ff6b6b;
+}
+
+.upgrade{
+    margin-top:40px;
+    background:linear-gradient(135deg,#ff9f43,#ff6b6b);
+    border-radius:15px;
+    color:#fff;
+    text-align:center;
+    padding:25px 20px;
+}
+
+.upgrade button{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#fff;
+    color:#ff6b6b;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* Main */
+
+.main{
+    flex:1;
+    padding:30px;
+}
+
+/* Header */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.search{
+    display:flex;
+    align-items:center;
+    background:#fff;
+    width:350px;
+    padding:12px 18px;
+    border-radius:12px;
+}
+
+.search input{
+    border:none;
+    outline:none;
+    width:100%;
+    margin-left:10px;
+    font-size:15px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.header-right svg{
+    font-size:20px;
+    cursor:pointer;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.profile img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+.profile h4{
+    font-size:15px;
+}
+
+.profile p{
+    color:#777;
+    font-size:13px;
+}
+
+/* Title */
+
+.title{
+    margin-bottom:30px;
+    color:#2d3436;
+}
+
+/* Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.card{
+    padding:25px;
+    border-radius:15px;
+    color:#fff;
+}
+
+.card svg{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.card h5{
+    margin-bottom:10px;
+    font-size:16px;
+}
+
+.card h3{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.card p{
+    font-weight:bold;
+}
+
+.bitcoin{
+    background:#f6c65b;
+}
+
+.eth{
+    background:#ff8b8b;
+}
+
+.lite{
+    background:#7ed6c2;
+}
+
+.ripple{
+    background:#ff9eb5;
+}
+
+/* Bottom Layout */
+
+.content{
+    display:grid;
+    grid-template-columns:3fr 1fr;
+    gap:25px;
+}
+
+.chart-box,
+.market,
+.exchange{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+}
+
+.box-title{
+    margin-bottom:20px;
+}
+
+.chart svg{
+    width:100%;
+    height:320px;
+}
+
+.right-panel{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.market h3,
+.exchange h3{
+    margin-bottom:20px;
+}
+
+.market div{
+    display:flex;
+    justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+}
+
+.exchange h2{
+    margin:25px 0;
+    color:#30336b;
+}
+
+.exchange button{
+    width:100%;
+    padding:14px;
+    background:#ff6b6b;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.exchange button:hover{
+    background:#ff5252;
+}
+
+/* Responsive */
+
+@media(max-width:1200px){
+
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+.content{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.sidebar{
+display:none;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+gap:20px;
+}
+
+.search{
+width:100%;
+}
+
+}

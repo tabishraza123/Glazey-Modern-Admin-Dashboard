@@ -1,445 +1,227 @@
-"use client";
+import "./../../css/user.css";
 
-import { useState } from "react";
-import AdminLayout from "../../(auth)/components/AdminLayout";
+export default function UserProfile() {
 
-const initialUsers = [
-  {
-    id: 1,
-    name: "Samantha William",
-    email: "samantha@example.com",
-    role: "Admin",
-    status: "Active",
-    joined: "12 Aug 2024",
-  },
-  {
-    id: 2,
-    name: "Tony Soap",
-    email: "tony@example.com",
-    role: "Developer",
-    status: "Active",
-    joined: "18 Aug 2024",
-  },
-  {
-    id: 3,
-    name: "Karen Hope",
-    email: "karen@example.com",
-    role: "Designer",
-    status: "Active",
-    joined: "22 Aug 2024",
-  },
-  {
-    id: 4,
-    name: "Jordan Nico",
-    email: "jordan@example.com",
-    role: "Manager",
-    status: "Inactive",
-    joined: "02 Sep 2024",
-  },
-  {
-    id: 5,
-    name: "Kevin Ard",
-    email: "kevin@example.com",
-    role: "Developer",
-    status: "Active",
-    joined: "10 Sep 2024",
-  },
+const messages=[
+{
+name:"Samantha William",
+time:"12:45 PM",
+msg:"Lorem ipsum dolor sit amet..."
+},
+{
+name:"Tony Soap",
+time:"12:45 PM",
+msg:"Lorem ipsum dolor sit amet..."
+},
+{
+name:"Karen Hope",
+time:"12:45 PM",
+msg:"Lorem ipsum dolor sit amet..."
+},
+{
+name:"Jordan Nico",
+time:"12:45 PM",
+msg:"Lorem ipsum dolor sit amet..."
+}
 ];
 
-export default function UsersPage() {
-  const [users, setUsers] = useState(initialUsers);
-
-  const [search, setSearch] = useState("");
-
-  const [showModal, setShowModal] = useState(false);
-
-  const [newUser, setNewUser] = useState({
-    name: "",
-    email: "",
-    role: "Developer",
-  });
-
-  const filteredUsers = users.filter(
-    (user) =>
-      user.name
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      user.email
-        .toLowerCase()
-        .includes(search.toLowerCase())
-  );
-
-  const addUser = () => {
-    if (!newUser.name || !newUser.email) {
-      alert("Please enter name and email");
-      return;
-    }
-
-    const user = {
-      id: Date.now(),
-      name: newUser.name,
-      email: newUser.email,
-      role: newUser.role,
-      status: "Active",
-      joined: "Today",
-    };
-
-    setUsers([...users, user]);
-
-    setNewUser({
-      name: "",
-      email: "",
-      role: "Developer",
-    });
-
-    setShowModal(false);
-  };
-
-  const deleteUser = (id) => {
-    const confirmDelete = confirm(
-      "Are you sure you want to delete this user?"
-    );
-
-    if (confirmDelete) {
-      setUsers(
-        users.filter((user) => user.id !== id)
-      );
-    }
-  };
+return(
 
-  return (
-    <AdminLayout>
+<div className="dashboard">
 
-      {/* HEADER */}
-
-      <div className="users-page-header">
-
-        <div>
-          <h1>Users</h1>
-
-          <p>
-            Manage your team members and user accounts
-          </p>
-        </div>
+{/* Sidebar */}
 
-        <button
-          className="add-user-button"
-          onClick={() => setShowModal(true)}
-        >
-          + Add User
-        </button>
+<aside className="sidebar">
 
-      </div>
+<div className="logo">
+<h2>Glazey<span>.</span></h2>
+</div>
 
+<ul className="menu">
 
-      {/* STATS */}
+<li className="active">Dashboard</li>
+<li>Email</li>
+<li>Contacts</li>
+<li>Crypto</li>
+<li>Kanban</li>
+<li>Invoicing</li>
+<li>Banking</li>
+<li>Ticketing</li>
+<li>File Manager</li>
+<li>User</li>
+<li>Calendar</li>
+<li>Todo List</li>
 
-      <div className="users-stats">
+</ul>
 
-        <div className="user-stat-card">
-          <span>Total Users</span>
-          <strong>{users.length}</strong>
-        </div>
+<div className="upgrade">
 
-        <div className="user-stat-card">
-          <span>Active Users</span>
-          <strong>
-            {users.filter(
-              (user) => user.status === "Active"
-            ).length}
-          </strong>
-        </div>
+<h4>Upgrade your Account to Pro</h4>
 
-        <div className="user-stat-card">
-          <span>Developers</span>
-          <strong>
-            {users.filter(
-              (user) => user.role === "Developer"
-            ).length}
-          </strong>
-        </div>
+<button>Upgrade</button>
 
-        <div className="user-stat-card">
-          <span>Designers</span>
-          <strong>
-            {users.filter(
-              (user) => user.role === "Designer"
-            ).length}
-          </strong>
-        </div>
+</div>
 
-      </div>
+</aside>
 
+{/* Main */}
 
-      {/* USER TABLE */}
+<div className="main">
 
-      <div className="users-card">
+<div className="profile-grid">
 
-        <div className="users-card-header">
+<div className="left">
 
-          <div>
-            <h2>All Users</h2>
-            <p>
-              View and manage all users
-            </p>
-          </div>
+{/* Profile */}
 
-          <div className="users-search">
+<div className="profile-card">
 
-            <span>⌕</span>
+<div className="profile-image"></div>
 
-            <input
-              type="text"
-              placeholder="Search users..."
-              value={search}
-              onChange={(e) =>
-                setSearch(e.target.value)
-              }
-            />
+<div className="profile-info">
 
-          </div>
+<h2>Nadila Adja</h2>
 
-        </div>
+<p>UI Designer</p>
 
+<span>Jakarta, Indonesia</span>
 
-        <div className="users-table-wrapper">
+<div className="contact">
 
-          <table className="users-table">
+<p>📞 +12 345 6789 0</p>
 
-            <thead>
+<p>✉ jordan@mail.com</p>
 
-              <tr>
-                <th>User</th>
-                <th>Role</th>
-                <th>Status</th>
-                <th>Joined</th>
-                <th>Action</th>
-              </tr>
+</div>
 
-            </thead>
+</div>
 
-            <tbody>
+<button>Edit Profile</button>
 
-              {filteredUsers.map((user) => (
+</div>
 
-                <tr key={user.id}>
+{/* Chart */}
 
-                  <td>
+<div className="chart-card">
 
-                    <div className="user-table-info">
+<div className="chart-header">
 
-                      <div className="user-table-avatar">
-                        {user.name
-                          .split(" ")
-                          .map((word) => word[0])
-                          .join("")}
-                      </div>
+<h3>Pie Chart</h3>
 
-                      <div>
-                        <strong>
-                          {user.name}
-                        </strong>
+<div>
 
-                        <span>
-                          {user.email}
-                        </span>
-                      </div>
+<button className="active">
+Chart
+</button>
 
-                    </div>
+<button>
+Activity
+</button>
 
-                  </td>
+</div>
 
+</div>
 
-                  <td>
+<div className="charts">
 
-                    <span className="user-role">
-                      {user.role}
-                    </span>
+<div className="circle red">81%</div>
 
-                  </td>
+<div className="circle yellow">22%</div>
 
+<div className="circle pink">62%</div>
 
-                  <td>
+<div className="circle blue">62%</div>
 
-                    <span
-                      className={
-                        user.status === "Active"
-                          ? "user-status active"
-                          : "user-status inactive"
-                      }
-                    >
-                      {user.status}
-                    </span>
+</div>
 
-                  </td>
+<div className="chart-footer">
 
+<h4>Best tips increase management</h4>
 
-                  <td>
-                    <span className="joined-date">
-                      {user.joined}
-                    </span>
-                  </td>
+<p>
+Lorem ipsum dolor sit amet consectetur.
+</p>
 
+<button>
+Learn More
+</button>
 
-                  <td>
+</div>
 
-                    <div className="user-actions">
+</div>
 
-                      <button
-                        title="Edit"
-                        onClick={() =>
-                          alert(
-                            `Edit ${user.name}`
-                          )
-                        }
-                      >
-                        ✎
-                      </button>
+</div>
 
-                      <button
-                        title="Delete"
-                        onClick={() =>
-                          deleteUser(user.id)
-                        }
-                      >
-                        🗑
-                      </button>
+{/* Right */}
 
-                    </div>
+<div className="right">
 
-                  </td>
+<div className="plan-card">
 
-                </tr>
+<h4>Your Plan</h4>
 
-              ))}
+<h2>Free</h2>
 
-            </tbody>
+<p>50 GB Storage</p>
 
-          </table>
+<p>Limited Features</p>
 
-        </div>
+<button>
+Upgrade Plan
+</button>
 
+</div>
 
-        {filteredUsers.length === 0 && (
+<div className="message-card">
 
-          <div className="no-users">
-            No users found
-          </div>
+<h3>Messages</h3>
 
-        )}
+<input
+type="text"
+placeholder="Search..."
+/>
 
-      </div>
+{
+messages.map((item,index)=>(
 
+<div
+className="message"
+key={index}
+>
 
-      {/* ADD USER MODAL */}
+<div className="avatar"></div>
 
-      {showModal && (
+<div>
 
-        <div className="users-modal-overlay">
+<h4>{item.name}</h4>
 
-          <div className="users-modal">
+<p>{item.msg}</p>
 
-            <div className="users-modal-header">
+</div>
 
-              <h2>
-                Add New User
-              </h2>
+<span>{item.time}</span>
 
-              <button
-                onClick={() =>
-                  setShowModal(false)
-                }
-              >
-                ×
-              </button>
+</div>
 
-            </div>
+))
+}
 
+<button className="view-btn">
 
-            <div className="users-form">
+View More
 
-              <label>
-                Full Name
-              </label>
+</button>
 
-              <input
-                type="text"
-                placeholder="Enter full name"
-                value={newUser.name}
-                onChange={(e) =>
-                  setNewUser({
-                    ...newUser,
-                    name: e.target.value,
-                  })
-                }
-              />
+</div>
 
+</div>
 
-              <label>
-                Email Address
-              </label>
+</div>
 
-              <input
-                type="email"
-                placeholder="Enter email"
-                value={newUser.email}
-                onChange={(e) =>
-                  setNewUser({
-                    ...newUser,
-                    email: e.target.value,
-                  })
-                }
-              />
+</div>
 
+</div>
 
-              <label>
-                Role
-              </label>
+);
 
-              <select
-                value={newUser.role}
-                onChange={(e) =>
-                  setNewUser({
-                    ...newUser,
-                    role: e.target.value,
-                  })
-                }
-              >
-                <option>Admin</option>
-                <option>Manager</option>
-                <option>Developer</option>
-                <option>Designer</option>
-              </select>
-
-
-              <div className="users-modal-actions">
-
-                <button
-                  className="users-cancel"
-                  onClick={() =>
-                    setShowModal(false)
-                  }
-                >
-                  Cancel
-                </button>
-
-                <button
-                  className="users-save"
-                  onClick={addUser}
-                >
-                  Add User
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      )}
-
-    </AdminLayout>
-  );
 }

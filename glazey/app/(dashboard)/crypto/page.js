@@ -1,3 +1,4 @@
+import "./../../css/crypto.css";
 import AdminLayout from "../../(auth)/components/AdminLayout";
 
 const cryptoAssets = [

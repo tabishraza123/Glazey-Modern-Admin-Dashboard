@@ -1,499 +1,161 @@
-"use client";
+import "./../../css/ticketing.css";
 
-import { useState } from "react";
-import AdminLayout from "../../(auth)/components/AdminLayout";
-
-const initialTasks = [
-  {
-    id: 1,
-    title: "Create Dashboard UI",
-    description: "Build the main admin dashboard interface.",
-    status: "todo",
-    priority: "High",
-    assignee: "TM",
-  },
-  {
-    id: 2,
-    title: "Setup API Integration",
-    description: "Connect frontend with backend APIs.",
-    status: "progress",
-    priority: "Medium",
-    assignee: "AK",
-  },
-  {
-    id: 3,
-    title: "Test Login Module",
-    description: "Check authentication and login flow.",
-    status: "review",
-    priority: "High",
-    assignee: "RS",
-  },
-  {
-    id: 4,
-    title: "Responsive Design",
-    description: "Make dashboard responsive for all devices.",
-    status: "completed",
-    priority: "Low",
-    assignee: "TM",
-  },
-];
-
-const columns = [
-  {
-    id: "todo",
-    title: "To Do",
-  },
-  {
-    id: "progress",
-    title: "In Progress",
-  },
-  {
-    id: "review",
-    title: "Review",
-  },
-  {
-    id: "completed",
-    title: "Completed",
-  },
-];
-
-export default function TasksPage() {
-  const [tasks, setTasks] = useState(initialTasks);
-
-  const [search, setSearch] = useState("");
-
-  const [showModal, setShowModal] =
-    useState(false);
-
-  const [newTask, setNewTask] = useState({
-    title: "",
-    description: "",
-    priority: "Medium",
-    assignee: "TM",
-  });
-
-  const filteredTasks = tasks.filter(
-    (task) =>
-      task.title
-        .toLowerCase()
-        .includes(search.toLowerCase())
-  );
-
-  const addTask = () => {
-    if (!newTask.title) {
-      alert("Please enter task title");
-      return;
-    }
-
-    const task = {
-      id: Date.now(),
-      title: newTask.title,
-      description: newTask.description,
-      status: "todo",
-      priority: newTask.priority,
-      assignee: newTask.assignee,
-    };
-
-    setTasks([...tasks, task]);
-
-    setNewTask({
-      title: "",
-      description: "",
-      priority: "Medium",
-      assignee: "TM",
-    });
-
-    setShowModal(false);
-  };
-
-  const deleteTask = (id) => {
-    if (
-      confirm(
-        "Are you sure you want to delete this task?"
-      )
-    ) {
-      setTasks(
-        tasks.filter(
-          (task) => task.id !== id
-        )
-      );
-    }
-  };
-
-  const moveTask = (id, status) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id
-          ? {
-              ...task,
-              status,
-            }
-          : task
-      )
-    );
-  };
+export default function TicketingPage() {
+  const tickets = [
+    {
+      event: "Music Event",
+      email: "nadia@gmail.com",
+      status: "Completed",
+      amount: "- $60.00",
+    },
+    {
+      event: "Anime Music Event",
+      email: "sam@gmail.com",
+      status: "Completed",
+      amount: "- $60.00",
+    },
+    {
+      event: "Webinar Event",
+      email: "will@gmail.com",
+      status: "Pending",
+      amount: "- $60.00",
+    },
+    {
+      event: "UX Design Workshop",
+      email: "samantha@gmail.com",
+      status: "Completed",
+      amount: "- $60.00",
+    },
+    {
+      event: "Music Event",
+      email: "soap@gmail.com",
+      status: "Pending",
+      amount: "- $60.00",
+    },
+    {
+      event: "Design Event",
+      email: "jack@gmail.com",
+      status: "Completed",
+      amount: "- $60.00",
+    },
+    {
+      event: "Music Event",
+      email: "jordan@gmail.com",
+      status: "Unpaid",
+      amount: "- $60.00",
+    },
+  ];
 
   return (
-    <AdminLayout>
+    <div className="ticket-page">
+      {/* Header */}
 
-      {/* HEADER */}
+      <div className="ticket-header">
+        <h2>Ticketing</h2>
 
-      <div className="tasks-page-header">
-
-        <div>
-
-          <h1>
-            Tasks
-          </h1>
-
-          <p>
-            Manage your team's tasks and workflow
-          </p>
-
+        <div className="ticket-search">
+          <input type="text" placeholder="Search here..." />
+          <button>Search</button>
         </div>
-
-        <button
-          className="add-task-button"
-          onClick={() =>
-            setShowModal(true)
-          }
-        >
-          + Add Task
-        </button>
-
       </div>
 
+      {/* Summary */}
 
-      {/* TOOLBAR */}
-
-      <div className="tasks-toolbar">
-
-        <div className="task-search">
-
-          <span>
-            ⌕
-          </span>
-
-          <input
-            type="text"
-            placeholder="Search tasks..."
-            value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
-          />
-
+      <div className="ticket-summary">
+        <div className="summary-card">
+          <p>Ticket Sold</p>
+          <h3>11,720</h3>
         </div>
 
-        <div className="task-count">
-
-          Total Tasks:
-          <strong>
-            {tasks.length}
-          </strong>
-
+        <div className="summary-card">
+          <p>Ticket Refund</p>
+          <h3>2,345</h3>
         </div>
 
+        <div className="summary-card">
+          <p>Canceled</p>
+          <h3>980</h3>
+        </div>
+
+        <div className="summary-card">
+          <p>Rescheduled</p>
+          <h3>720</h3>
+        </div>
       </div>
 
+      <div className="ticket-grid">
+        {/* Transactions */}
 
-      {/* KANBAN */}
+        <div className="transaction-box">
+          <h3>Latest Transaction</h3>
 
-      <div className="kanban-board">
+          <table>
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
 
-        {columns.map((column) => (
+            <tbody>
+              {tickets.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.event}</td>
 
-          <div
-            className="kanban-column"
-            key={column.id}
-          >
+                  <td>{item.email}</td>
 
-            <div className="kanban-column-header">
+                  <td>
+                    <span className={item.status.toLowerCase()}>
+                      {item.status}
+                    </span>
+                  </td>
 
-              <h2>
-                {column.title}
-              </h2>
+                  <td className="amount">{item.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-              <span>
-                {
-                  filteredTasks.filter(
-                    (task) =>
-                      task.status ===
-                      column.id
-                  ).length
-                }
-              </span>
+        {/* Agenda */}
 
+        <div className="agenda-box">
+          <h3>Event Agenda</h3>
+
+          <div className="agenda-item">
+            <div className="date">1 Dec</div>
+
+            <div>
+              <h4>Design Webinar</h4>
+              <p>1 December 2021</p>
             </div>
-
-
-            <div className="kanban-tasks">
-
-              {filteredTasks
-                .filter(
-                  (task) =>
-                    task.status ===
-                    column.id
-                )
-                .map((task) => (
-
-                  <div
-                    className="task-card"
-                    key={task.id}
-                  >
-
-                    <div className="task-card-top">
-
-                      <span
-                        className={`task-priority ${task.priority.toLowerCase()}`}
-                      >
-                        {task.priority}
-                      </span>
-
-                      <button
-                        onClick={() =>
-                          deleteTask(
-                            task.id
-                          )
-                        }
-                      >
-                        🗑
-                      </button>
-
-                    </div>
-
-
-                    <h3>
-                      {task.title}
-                    </h3>
-
-                    <p>
-                      {task.description}
-                    </p>
-
-
-                    <div className="task-card-footer">
-
-                      <div className="task-assignee">
-                        {task.assignee}
-                      </div>
-
-                      <select
-                        value={task.status}
-                        onChange={(e) =>
-                          moveTask(
-                            task.id,
-                            e.target.value
-                          )
-                        }
-                      >
-
-                        <option value="todo">
-                          To Do
-                        </option>
-
-                        <option value="progress">
-                          In Progress
-                        </option>
-
-                        <option value="review">
-                          Review
-                        </option>
-
-                        <option value="completed">
-                          Completed
-                        </option>
-
-                      </select>
-
-                    </div>
-
-                  </div>
-
-                ))}
-
-
-              {filteredTasks.filter(
-                (task) =>
-                  task.status ===
-                  column.id
-              ).length === 0 && (
-
-                <div className="empty-task">
-                  No tasks
-                </div>
-
-              )}
-
-            </div>
-
           </div>
 
-        ))}
+          <div className="agenda-item">
+            <div className="date">1 Nov</div>
 
-      </div>
-
-
-      {/* ADD TASK MODAL */}
-
-      {showModal && (
-
-        <div className="task-modal-overlay">
-
-          <div className="task-modal">
-
-            <div className="task-modal-header">
-
-              <h2>
-                Add New Task
-              </h2>
-
-              <button
-                onClick={() =>
-                  setShowModal(false)
-                }
-              >
-                ×
-              </button>
-
+            <div>
+              <h4>Anime Music Event</h4>
+              <p>1 December 2021</p>
             </div>
-
-
-            <div className="task-form">
-
-              <label>
-                Task Title
-              </label>
-
-              <input
-                type="text"
-                placeholder="Enter task title"
-                value={newTask.title}
-                onChange={(e) =>
-                  setNewTask({
-                    ...newTask,
-                    title:
-                      e.target.value,
-                  })
-                }
-              />
-
-
-              <label>
-                Description
-              </label>
-
-              <textarea
-                placeholder="Enter task description"
-                value={
-                  newTask.description
-                }
-                onChange={(e) =>
-                  setNewTask({
-                    ...newTask,
-                    description:
-                      e.target.value,
-                  })
-                }
-              />
-
-
-              <label>
-                Priority
-              </label>
-
-              <select
-                value={
-                  newTask.priority
-                }
-                onChange={(e) =>
-                  setNewTask({
-                    ...newTask,
-                    priority:
-                      e.target.value,
-                  })
-                }
-              >
-
-                <option>
-                  Low
-                </option>
-
-                <option>
-                  Medium
-                </option>
-
-                <option>
-                  High
-                </option>
-
-              </select>
-
-
-              <label>
-                Assignee
-              </label>
-
-              <select
-                value={
-                  newTask.assignee
-                }
-                onChange={(e) =>
-                  setNewTask({
-                    ...newTask,
-                    assignee:
-                      e.target.value,
-                  })
-                }
-              >
-
-                <option>
-                  TM
-                </option>
-
-                <option>
-                  AK
-                </option>
-
-                <option>
-                  RS
-                </option>
-
-                <option>
-                  SK
-                </option>
-
-              </select>
-
-
-              <div className="task-modal-actions">
-
-                <button
-                  className="task-cancel"
-                  onClick={() =>
-                    setShowModal(false)
-                  }
-                >
-                  Cancel
-                </button>
-
-                <button
-                  className="task-save"
-                  onClick={addTask}
-                >
-                  Add Task
-                </button>
-
-              </div>
-
-            </div>
-
           </div>
 
+          <div className="agenda-item">
+            <div className="date">23 Dec</div>
+
+            <div>
+              <h4>Top Management</h4>
+              <p>1 December 2021</p>
+            </div>
+          </div>
+
+          <button className="view-btn">
+            View More
+          </button>
         </div>
-
-      )}
-
-    </AdminLayout>
+      </div>
+    </div>
   );
 }

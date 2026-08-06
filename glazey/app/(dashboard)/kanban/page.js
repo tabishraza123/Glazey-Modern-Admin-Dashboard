@@ -1,5 +1,6 @@
 "use client";
 
+import "./../../css/kanban.css";
 import { useState } from "react";
 import AdminLayout from "../../(auth)/components/AdminLayout";
 

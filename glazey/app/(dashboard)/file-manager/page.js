@@ -1,442 +1,184 @@
-"use client";
+import "./../../css/file-maneger.css";
 
-import { useState } from "react";
-import AdminLayout from "../../(auth)/components/AdminLayout";
+export default function FileManager() {
 
-const initialChats = [
-  {
-    id: 1,
-    name: "Samantha William",
-    avatar: "SW",
-    status: "Online",
-    lastMessage: "Hey! How is the project going?",
-    time: "10:32 AM",
-    unread: 2,
-    messages: [
-      {
-        id: 1,
-        text: "Hey! How is the project going?",
-        time: "10:30 AM",
-        sender: "them",
-      },
-      {
-        id: 2,
-        text: "It's going really well. We are almost finished.",
-        time: "10:31 AM",
-        sender: "me",
-      },
-      {
-        id: 3,
-        text: "That's great! Let me know if you need any help.",
-        time: "10:32 AM",
-        sender: "them",
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: "Tony Soap",
-    avatar: "TS",
-    status: "Online",
-    lastMessage: "I will send the files today.",
-    time: "09:45 AM",
-    unread: 1,
-    messages: [
-      {
-        id: 1,
-        text: "I will send the files today.",
-        time: "09:45 AM",
-        sender: "them",
-      },
-    ],
-  },
-  {
-    id: 3,
-    name: "Karen Hope",
-    avatar: "KH",
-    status: "Offline",
-    lastMessage: "Thanks for your help!",
-    time: "Yesterday",
-    unread: 0,
-    messages: [
-      {
-        id: 1,
-        text: "Thanks for your help!",
-        time: "Yesterday",
-        sender: "them",
-      },
-    ],
-  },
-  {
-    id: 4,
-    name: "Jordan Nico",
-    avatar: "JN",
-    status: "Online",
-    lastMessage: "Let's discuss this tomorrow.",
-    time: "Yesterday",
-    unread: 0,
-    messages: [
-      {
-        id: 1,
-        text: "Let's discuss this tomorrow.",
-        time: "Yesterday",
-        sender: "them",
-      },
-    ],
-  },
-  {
-    id: 5,
-    name: "Kevin Ard",
-    avatar: "KA",
-    status: "Offline",
-    lastMessage: "The design looks perfect.",
-    time: "Monday",
-    unread: 0,
-    messages: [
-      {
-        id: 1,
-        text: "The design looks perfect.",
-        time: "Monday",
-        sender: "them",
-      },
-    ],
-  },
+const files=[
+{
+name:"Scenery.jpg",
+date:"December 27th, 2021 04:56 AM",
+size:"1.0 MB"
+},
+{
+name:"Video.mp4",
+date:"December 27th, 2021 04:56 AM",
+size:"25.0 MB"
+},
+{
+name:"Music.mp3",
+date:"December 27th, 2021 04:56 AM",
+size:"21.0 MB"
+},
+{
+name:"Document.doc",
+date:"December 27th, 2021 04:56 AM",
+size:"10.0 MB"
+},
+{
+name:"Project 01",
+date:"December 27th, 2021 04:56 AM",
+size:"10.0 MB"
+},
+{
+name:"Project 02",
+date:"December 27th, 2021 04:56 AM",
+size:"10.0 MB"
+}
 ];
 
-export default function MessagesPage() {
-  const [chats, setChats] = useState(initialChats);
+return(
 
-  const [selectedChatId, setSelectedChatId] =
-    useState(1);
+<div className="file-dashboard">
 
-  const [search, setSearch] = useState("");
+<div className="main-content">
 
-  const [message, setMessage] = useState("");
+<h2 className="page-title">
+File Manager
+</h2>
 
-  const selectedChat = chats.find(
-    (chat) => chat.id === selectedChatId
-  );
+{/* Storage */}
 
-  const filteredChats = chats.filter((chat) =>
-    chat.name
-      .toLowerCase()
-      .includes(search.toLowerCase())
-  );
+<div className="storage-grid">
 
-  const sendMessage = () => {
-    if (!message.trim()) return;
+<div className="storage-card">
+<div className="circle red">80%</div>
+<div>
+<p>Storage</p>
+<h4>Google Drive</h4>
+<h5>40 GB / 50 GB</h5>
+</div>
+</div>
 
-    const newMessage = {
-      id: Date.now(),
-      text: message,
-      time: "Just now",
-      sender: "me",
-    };
+<div className="storage-card">
+<div className="circle yellow">80%</div>
+<div>
+<p>Storage</p>
+<h4>Google Drive</h4>
+<h5>40 GB / 50 GB</h5>
+</div>
+</div>
 
-    setChats((oldChats) =>
-      oldChats.map((chat) => {
+<div className="storage-card">
+<div className="circle purple">80%</div>
+<div>
+<p>Storage</p>
+<h4>Google Drive</h4>
+<h5>40 GB / 50 GB</h5>
+</div>
+</div>
 
-        if (chat.id === selectedChatId) {
+<div className="storage-card">
+<div className="circle blue">80%</div>
+<div>
+<p>Storage</p>
+<h4>Google Drive</h4>
+<h5>40 GB / 50 GB</h5>
+</div>
+</div>
 
-          return {
-            ...chat,
+</div>
 
-            lastMessage: message,
+<div className="file-layout">
 
-            time: "Just now",
+{/* Left */}
 
-            messages: [
-              ...chat.messages,
-              newMessage,
-            ],
-          };
+<div className="left-panel">
 
-        }
+<button className="upload-btn">
++ Upload
+</button>
 
-        return chat;
+<h4>Menu</h4>
 
-      })
-    );
+<ul>
 
-    setMessage("");
-  };
+<li>All File</li>
+<li>Images</li>
+<li>Videos</li>
+<li>Music</li>
+<li>Documents</li>
 
-  return (
-    <AdminLayout>
+</ul>
 
-      <div className="messages-page">
+<h4>Quick Access</h4>
 
-        {/* PAGE HEADER */}
+<ul>
 
-        <div className="messages-page-header">
+<li>Project 01</li>
+<li>Project 02</li>
 
-          <div>
+</ul>
 
-            <h1>
-              Messages
-            </h1>
+</div>
 
-            <p>
-              Chat with your team members
-            </p>
+{/* Right */}
 
-          </div>
+<div className="right-panel">
 
-          <button className="new-message-button">
-            + New Message
-          </button>
+<div className="top-bar">
 
-        </div>
+<h3>Recent Files</h3>
 
+<input
+type="text"
+placeholder="Search here..."
+/>
 
-        {/* CHAT CONTAINER */}
+</div>
 
-        <div className="messages-container">
+<table>
 
-          {/* CHAT SIDEBAR */}
+<thead>
 
-          <div className="chat-sidebar">
+<tr>
 
-            <div className="chat-sidebar-header">
+<th>File Name</th>
+<th>Date</th>
+<th>File Size</th>
 
-              <h2>
-                Conversations
-              </h2>
+</tr>
 
-              <span>
-                {chats.length}
-              </span>
+</thead>
 
-            </div>
+<tbody>
 
+{
+files.map((item,index)=>(
 
-            {/* SEARCH */}
+<tr key={index}>
 
-            <div className="chat-search">
+<td>{item.name}</td>
 
-              <span>
-                ⌕
-              </span>
+<td>{item.date}</td>
 
-              <input
-                type="text"
-                placeholder="Search messages..."
-                value={search}
-                onChange={(e) =>
-                  setSearch(e.target.value)
-                }
-              />
+<td>{item.size}</td>
 
-            </div>
+</tr>
 
+))
+}
 
-            {/* CHAT LIST */}
+</tbody>
 
-            <div className="chat-list">
+</table>
 
-              {filteredChats.map((chat) => (
+</div>
 
-                <div
-                  className={`chat-list-item ${
-                    selectedChatId === chat.id
-                      ? "active"
-                      : ""
-                  }`}
-                  key={chat.id}
-                  onClick={() =>
-                    setSelectedChatId(chat.id)
-                  }
-                >
+</div>
 
-                  <div className="chat-avatar">
+</div>
 
-                    {chat.avatar}
+</div>
 
-                    {chat.status === "Online" && (
-                      <span className="online-dot"></span>
-                    )}
+);
 
-                  </div>
-
-
-                  <div className="chat-preview">
-
-                    <div className="chat-name-row">
-
-                      <strong>
-                        {chat.name}
-                      </strong>
-
-                      <small>
-                        {chat.time}
-                      </small>
-
-                    </div>
-
-                    <div className="chat-message-row">
-
-                      <p>
-                        {chat.lastMessage}
-                      </p>
-
-                      {chat.unread > 0 && (
-
-                        <span className="unread-count">
-                          {chat.unread}
-                        </span>
-
-                      )}
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
-
-          {/* CHAT AREA */}
-
-          <div className="chat-area">
-
-            {/* CHAT HEADER */}
-
-            <div className="chat-header">
-
-              <div className="chat-user-info">
-
-                <div className="chat-avatar large">
-
-                  {selectedChat.avatar}
-
-                  {selectedChat.status === "Online" && (
-                    <span className="online-dot"></span>
-                  )}
-
-                </div>
-
-                <div>
-
-                  <h3>
-                    {selectedChat.name}
-                  </h3>
-
-                  <p>
-                    {selectedChat.status}
-                  </p>
-
-                </div>
-
-              </div>
-
-
-              <div className="chat-header-actions">
-
-                <button>
-                  ☎
-                </button>
-
-                <button>
-                  ◉
-                </button>
-
-                <button>
-                  •••
-                </button>
-
-              </div>
-
-            </div>
-
-
-            {/* MESSAGES */}
-
-            <div className="chat-messages">
-
-              <div className="chat-date">
-                Today
-              </div>
-
-              {selectedChat.messages.map(
-                (msg) => (
-
-                  <div
-                    className={`message-row ${
-                      msg.sender === "me"
-                        ? "my-message"
-                        : "their-message"
-                    }`}
-                    key={msg.id}
-                  >
-
-                    <div className="message-bubble">
-
-                      <p>
-                        {msg.text}
-                      </p>
-
-                      <span>
-                        {msg.time}
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                )
-              )}
-
-            </div>
-
-
-            {/* MESSAGE INPUT */}
-
-            <div className="message-input-area">
-
-              <button>
-                +
-              </button>
-
-              <button>
-                😊
-              </button>
-
-              <input
-                type="text"
-                placeholder="Write a message..."
-                value={message}
-                onChange={(e) =>
-                  setMessage(e.target.value)
-                }
-                onKeyDown={(e) => {
-
-                  if (e.key === "Enter") {
-                    sendMessage();
-                  }
-
-                }}
-              />
-
-              <button
-                className="send-message-button"
-                onClick={sendMessage}
-              >
-                ➤
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </AdminLayout>
-  );
 }
