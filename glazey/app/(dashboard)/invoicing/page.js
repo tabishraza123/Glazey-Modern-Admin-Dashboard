@@ -1,190 +1,279 @@
 import "./../../css/invoicing.css";
 
-export default function InvoicePage() {
-
 const invoices = [
-{
-id:"#INV-0001234",
-client:"Nella Vita",
-email:"vita@mail.com",
-amount:"$650,036.34",
-status:"Completed"
-},
-{
-id:"#INV-0001235",
-client:"Johnny Ahmad",
-email:"ahmad@mail.com",
-amount:"$650,036.34",
-status:"Pending"
-},
-{
-id:"#INV-0001236",
-client:"Samantha Hu",
-email:"sam@mail.com",
-amount:"$650,036.34",
-status:"Unpaid"
-},
-{
-id:"#INV-0001237",
-client:"Tony Sopp",
-email:"tony@mail.com",
-amount:"$650,036.34",
-status:"Completed"
-},
-{
-id:"#INV-0001238",
-client:"Karen Hope",
-email:"hope@mail.com",
-amount:"$650,036.34",
-status:"Completed"
-}
+  { client: "Nella Vita", email: "vita@mail.com", date: "June 1, 2020, 08:22 AM", status: "Completed", checked: false },
+  { client: "Johnny Ahmad", email: "ahmad@mail.com", date: "June 1, 2020, 08:22 AM", status: "Pending", checked: false },
+  { client: "Samantha W.", email: "mantha@mail.com", date: "June 1, 2020, 08:22 AM", status: "Unpaid", checked: true },
+  { client: "Tony Soap", email: "soap@mail.com", date: "June 1, 2020, 08:22 AM", status: "Completed", checked: false },
+  { client: "Karen Hope", email: "hope@mail.com", date: "June 1, 2020, 08:22 AM", status: "Completed", checked: true },
+  { client: "Jordan Nico", email: "jordan@mail.com", date: "June 1, 2020, 08:22 AM", status: "Completed", checked: true },
+  { client: "Nadila Adja", email: "adja@mail.com", date: "June 1, 2020, 08:22 AM", status: "Unpaid", checked: false },
 ];
 
-return(
+const menu = [
+  "Dashboard",
+  "Email",
+  "Contacts",
+  "Crypto",
+  "Kanban",
+  "Invoicing",
+  "Banking",
+  "Ticketing",
+  "File Manager",
+  "User",
+  "Calendar",
+  "Todo List",
+];
 
-<div className="invoice-page">
+export default function InvoicePage() {
+  return (
+    <div className="invoice-dashboard">
 
-<div className="invoice-top">
+      {/* ================= SIDEBAR ================= */}
+      <aside className="invoice-sidebar">
 
-<h2>Invoice</h2>
+        <div className="invoice-logo">
+          Glazey<span>.</span>
+        </div>
 
-<div className="invoice-actions">
+        <nav className="invoice-menu">
+          {menu.map((item, index) => (
+            <div
+              key={item}
+              className={`invoice-menu-item ${
+                index === 0 ? "invoice-active" : ""
+              }`}
+            >
+              <span className="menu-icon">
+                {["⌂", "✉", "♙", "◉", "▤", "▥", "▣", "▧", "▱", "♙", "□", "☑"][index]}
+              </span>
+              <span>{item}</span>
+            </div>
+          ))}
+        </nav>
 
-<input
-type="text"
-placeholder="Search here..."
-/>
+        <div className="invoice-upgrade">
+          <strong>Upgrade your</strong>
+          <strong>Account to Pro</strong>
 
-<button>
-New Invoice
-</button>
+          <button>Upgrade</button>
 
-</div>
+          <span className="upgrade-grid">▦</span>
+        </div>
 
-</div>
+      </aside>
 
+      {/* ================= MAIN ================= */}
+      <main className="invoice-main">
 
-<div className="invoice-cards">
+        {/* TOP NAVBAR */}
+        <header className="invoice-navbar">
 
-<div className="card">
+          <div className="invoice-search-top">
+            <span>⌕</span>
+            <input placeholder="Search here..." />
+          </div>
 
-<h5>Invoice Completed</h5>
+          <div className="invoice-nav-right">
 
-<h2>3,932</h2>
+            <button>🇺🇸 English (US)⌄</button>
 
-</div>
+            <span className="nav-icon">▤</span>
+            <span className="nav-icon">♧</span>
+            <span className="nav-icon">⚙</span>
 
-<div className="card">
+            <div className="admin-user">
+              <strong>Nella Vita</strong>
+              <small>Admin</small>
+            </div>
 
-<h5>Invoice Sent</h5>
+            <div className="admin-avatar"></div>
 
-<h2>1,234</h2>
+          </div>
 
-</div>
+        </header>
 
-<div className="card">
+        {/* PAGE HEADER */}
+        <section className="invoice-title-row">
 
-<h5>Invoice Unpaid</h5>
+          <h1>Invoice</h1>
 
-<h2>345</h2>
+          <div className="invoice-actions">
 
-</div>
+            <div className="invoice-search">
+              <span>⌕</span>
+              <input placeholder="Search here..." />
+            </div>
 
-<div className="card">
+            <button className="new-invoice">
+              New Invoice ⊕
+            </button>
 
-<h5>Invoice Draft</h5>
+          </div>
 
-<h2>932</h2>
+        </section>
 
-</div>
+        {/* SUMMARY CARDS */}
+        <section className="invoice-summary">
 
-</div>
+          <SummaryCard
+            icon="✓"
+            title="Invoice"
+            subtitle="Completed"
+            number="3.932"
+          />
 
+          <SummaryCard
+            icon="○"
+            title="Invoice"
+            subtitle="Sent"
+            number="1.234"
+          />
 
-<div className="invoice-table">
+          <SummaryCard
+            icon="○"
+            title="Invoice"
+            subtitle="Unpaid"
+            number="345"
+          />
 
-<table>
+          <SummaryCard
+            icon="○"
+            title="Invoice"
+            subtitle="Sent"
+            number="932"
+          />
 
-<thead>
+        </section>
 
-<tr>
+        {/* TABLE */}
+        <section className="invoice-table-box">
 
-<th>ID Invoice</th>
+          <table className="invoice-table">
 
-<th>Client</th>
+            <thead>
+              <tr>
+                <th className="check-column">
+                  <input type="checkbox" />
+                </th>
+                <th>ID Invoice</th>
+                <th>Due Date</th>
+                <th>Client</th>
+                <th>Contact</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
 
-<th>Email</th>
+            <tbody>
 
-<th>Amount</th>
+              {invoices.map((invoice, index) => (
 
-<th>Status</th>
+                <tr key={index}>
 
-<th>Action</th>
+                  <td className="check-column">
+                    <input
+                      type="checkbox"
+                      defaultChecked={invoice.checked}
+                    />
+                  </td>
 
-</tr>
+                  <td>
+                    <strong>#INV-0001234</strong>
+                  </td>
 
-</thead>
+                  <td className="date-text">
+                    {invoice.date}
+                  </td>
 
-<tbody>
+                  <td>
+                    <strong>{invoice.client}</strong>
+                    <small>Creative Agency</small>
+                  </td>
 
-{
-invoices.map((item,index)=>(
+                  <td>
+                    <div className="contact-cell">
+                      <span className="mail-icon">✉</span>
+                      {invoice.email}
+                    </div>
+                  </td>
 
-<tr key={index}>
+                  <td className="amount">
+                    $ 650,036.34
+                  </td>
 
-<td>{item.id}</td>
+                  <td>
+                    <span
+                      className={`invoice-status ${invoice.status
+                        .toLowerCase()
+                        .replace(" ", "-")}`}
+                    >
+                      {invoice.status === "Completed" && "✓ "}
+                      {invoice.status === "Pending" && "⊙ "}
+                      {invoice.status === "Unpaid" && "⊘ "}
+                      {invoice.status}
+                    </span>
+                  </td>
 
-<td>{item.client}</td>
+                  <td className="more">
+                    •••
+                  </td>
 
-<td>{item.email}</td>
+                </tr>
 
-<td className="amount">
-{item.amount}
-</td>
+              ))}
 
-<td>
+            </tbody>
 
-<span className={item.status.toLowerCase()}>
-{item.status}
-</span>
+          </table>
 
-</td>
+          {/* TABLE FOOTER */}
 
-<td>
+          <div className="invoice-footer">
 
-<button className="more">
-•••
-</button>
+            <span>
+              Showing 1-5 from 100 data
+            </span>
 
-</td>
+            <div className="pagination">
 
-</tr>
+              <button>‹</button>
+              <button>1</button>
+              <button className="page-active">2</button>
+              <button>3</button>
+              <button>›</button>
 
-))
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+  );
 }
 
-</tbody>
 
-</table>
+/* ================= SUMMARY CARD ================= */
 
-</div>
+function SummaryCard({ icon, title, subtitle, number }) {
+  return (
+    <div className="summary-card">
 
-<div className="pagination">
+      <div className="summary-icon">
+        {icon}
+      </div>
 
-<button>{"<"}</button>
+      <div className="summary-label">
+        <span>{title}</span>
+        <strong>{subtitle}</strong>
+      </div>
 
-<button className="active">1</button>
+      <h3>{number}</h3>
 
-<button>2</button>
-
-<button>3</button>
-
-<button>{">"}</button>
-
-</div>
-
-</div>
-
-)
-
+    </div>
+  );
 }

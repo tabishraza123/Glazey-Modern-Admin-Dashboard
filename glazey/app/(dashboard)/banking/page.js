@@ -1,187 +1,508 @@
+"use client";
+
+import { useState } from "react";
 import "./../../css/banking.css";
+import AdminLayout from "../../(auth)/components/AdminLayout";
+
+export default function Home() {
+  const [active, setActive] = useState("Dashboard");
+
+  const menu = [
+    ["⌂", "Dashboard"],
+    ["✉", "Email"],
+    ["♙", "Contacts"],
+    ["₿", "Crypto"],
+    ["▣", "Kanban"],
+    ["▤", "Invoicing"],
+    ["▱", "Banking"],
+    ["▣", "Ticketing"],
+    ["▤", "File Manager"],
+    ["♙", "User"],
+    ["□", "Calendar"],
+    ["☷", "Todo List"],
+  ];
+
+  const transactions = [
+    ["Portu Studio", "$ 650,036.34", "March 25, 2021"],
+    ["Akademi Studio", "$ 650,036.34", "March 25, 2021"],
+    ["Nexturn Studio", "$ 650,036.34", "March 25, 2021"],
+    ["Geox Studio", "$ 650,036.34", "March 25, 2021"],
+    ["Kleon Studio", "$ 650,036.34", "March 25, 2021"],
+  ];
+
+  return (
+    <div className="dashboard">
+
+      {/* SIDEBAR */}
+      <aside className="sidebar">
+
+        <div className="logo">
+          Glazey<span>.</span>
+        </div>
+
+        <nav className="menu">
+          {menu.map(([icon, name]) => (
+            <div
+              key={name}
+              className={`menu-item ${
+                active === name ? "active" : ""
+              }`}
+              onClick={() => setActive(name)}
+            >
+              <span className="menu-icon">
+                {icon}
+              </span>
+
+              <span>
+                {name}
+              </span>
+            </div>
+          ))}
+        </nav>
 
-export default function BankingPage() {
+        <div className="upgrade">
 
-const transactions=[
-{
-name:"Portu Studio",
-amount:"$650,036.34",
-date:"March 25, 2021"
-},
-{
-name:"Akademi Studio",
-amount:"$650,036.34",
-date:"March 25, 2021"
-},
-{
-name:"Nextrun Studio",
-amount:"$650,036.34",
-date:"March 25, 2021"
-},
-{
-name:"Geex Studio",
-amount:"$650,036.34",
-date:"March 25, 2021"
-},
-{
-name:"Klepon Studio",
-amount:"$650,036.34",
-date:"March 25, 2021"
-}
-];
+          <div className="upgrade-title">
+            Upgrade your
+            <br />
+            account to Pro
+          </div>
 
-return(
+          <button>
+            Upgrade
+          </button>
 
-<div className="banking">
+        </div>
 
-<div className="banking-header">
+      </aside>
 
-<h2>Banking</h2>
+      {/* MAIN */}
+      <main className="main">
 
-<input
-type="text"
-placeholder="Search here..."
-/>
+        {/* TOP BAR */}
+        <header className="topbar">
 
-</div>
+          <div className="search">
+            <span>⌕</span>
 
+            <input
+              type="text"
+              placeholder="Search here..."
+            />
+          </div>
 
-<div className="banking-grid">
+          <div className="top-actions">
+
+            <div className="language">
+              🇺🇸 English (US)⌄
+            </div>
+
+            <div className="notification">
+              ▤
+            </div>
+
+            <div className="notification">
+              ♧
+            </div>
 
-<div className="balance-card">
+            <div className="profile">
 
-<h3>Your Balance</h3>
+              <div>
+                <b>Nello Vita</b>
+                <small>Admin</small>
+              </div>
 
-<p>June 1, 2020, 08:22 AM</p>
+              <div className="avatar"></div>
 
-<h1>$23,741.00</h1>
+            </div>
 
-<span className="profit">+15%</span>
+          </div>
 
-<div className="chart">
+        </header>
 
-<div className="bar h1"></div>
-<div className="bar h2"></div>
-<div className="bar h3"></div>
-<div className="bar h4"></div>
-<div className="bar h5"></div>
-<div className="bar h6"></div>
-<div className="bar h7"></div>
+        {/* CONTENT */}
+        <div className="content">
 
-</div>
+          <h1>
+            Banking
+          </h1>
 
-<div className="income-box">
+          <div className="grid">
 
-<div className="income">
+            {/* LEFT */}
+            <section className="left">
 
-<h4>Income</h4>
+              {/* BALANCE */}
+              <div className="balance-card">
 
-<strong>$23,741.00</strong>
+                <div className="balance-info">
 
-</div>
+                  <h3>
+                    Your Balance
+                  </h3>
 
-<div className="income">
+                  <small>
+                    June 1, 2020, 08:22 AM
+                  </small>
 
-<h4>Outcome</h4>
+                  <p>
+                    This Month
+                  </p>
 
-<strong>$23,741.00</strong>
+                  <h2>
+                    $23,741.00
+                  </h2>
 
-</div>
+                  <div className="growth">
+                    ↗ 15%
+                  </div>
 
-</div>
+                </div>
 
-</div>
+                {/* CHART */}
+                <div className="chart">
 
+                  <div className="chart-tooltip">
+                    $ 33,568.60
+                  </div>
 
-<div className="card-box">
+                  <div className="bars">
 
-<div className="bank-card">
+                    <div className="bar-group">
+                      <i style={{ height: "65%" }}></i>
+                      <span>Mon</span>
+                    </div>
 
-<h3>1234 5678 9012 3456</h3>
+                    <div className="bar-group">
+                      <i style={{ height: "42%" }}></i>
+                      <span>Tue</span>
+                    </div>
 
-<p>Nella Vita</p>
+                    <div className="bar-group">
+                      <i style={{ height: "30%" }}></i>
+                      <span>Wed</span>
+                    </div>
 
-</div>
+                    <div className="bar-group selected">
+                      <i style={{ height: "76%" }}></i>
+                      <span>Thu</span>
+                    </div>
 
-<div className="payment">
+                    <div className="bar-group">
+                      <i style={{ height: "35%" }}></i>
+                      <span>Fri</span>
+                    </div>
 
-<h3>Quick Payment</h3>
+                    <div className="bar-group">
+                      <i style={{ height: "78%" }}></i>
+                      <span>Sat</span>
+                    </div>
 
-<div className="pay-item">
-<span>Nadia Adja</span>
-<strong>$12,568.60</strong>
-</div>
+                    <div className="bar-group">
+                      <i style={{ height: "84%" }}></i>
+                      <span>Sun</span>
+                    </div>
 
-<div className="pay-item">
-<span>Nadia Adja</span>
-<strong>$12,568.60</strong>
-</div>
+                  </div>
 
-<button>
-New Transfer
-</button>
+                </div>
 
-</div>
+              </div>
 
-</div>
+              {/* INCOME / OUTCOME */}
+              <div className="money-row">
 
-</div>
+                <div className="money-box">
 
+                  <div className="money-icon">
+                    ▣
+                  </div>
 
-<div className="transaction-card">
+                  <div>
+                    <small>
+                      Income
+                    </small>
 
-<div className="title">
+                    <strong>
+                      $23,741.00
+                    </strong>
+                  </div>
 
-<h3>Latest Transaction</h3>
+                </div>
 
-</div>
+                <div className="money-box">
 
-<table>
+                  <div className="money-icon">
+                    ▣
+                  </div>
 
-<thead>
+                  <div>
+                    <small>
+                      Outcome
+                    </small>
 
-<tr>
+                    <strong>
+                      $23,741.00
+                    </strong>
+                  </div>
 
-<th>Name</th>
+                </div>
 
-<th>Amount</th>
+              </div>
 
-<th>Date</th>
+              {/* TRANSACTIONS */}
+              <div className="transactions">
 
-<th></th>
+                <div className="section-heading">
 
-</tr>
+                  <h3>
+                    Latest Transaction
+                  </h3>
 
-</thead>
+                  <div className="filter">
+                    This Month⌄ &nbsp; ⋯
+                  </div>
 
-<tbody>
+                </div>
 
-{
-transactions.map((item,index)=>(
+                {transactions.map((item, index) => (
 
-<tr key={index}>
+                  <div
+                    className="transaction"
+                    key={index}
+                  >
 
-<td>{item.name}</td>
+                    <div className="company">
 
-<td>{item.amount}</td>
+                      <div className="company-icon"></div>
 
-<td>{item.date}</td>
+                      <b>
+                        {item[0]}
+                      </b>
 
-<td>•••</td>
+                    </div>
 
-</tr>
+                    <strong>
+                      {item[1]}
+                    </strong>
 
-))
-}
+                    <span>
+                      {item[2]}
+                    </span>
 
-</tbody>
+                    <div className="transaction-icon">
+                      ▣
+                    </div>
 
-</table>
+                    <div className="dots">
+                      •••
+                    </div>
 
-</div>
+                  </div>
 
-</div>
+                ))}
 
-);
+                {/* PAGINATION */}
+                <div className="pagination">
 
+                  <small>
+                    Showing 1-5 from 100 data
+                  </small>
+
+                  <div className="pages">
+
+                    <button>
+                      ‹
+                    </button>
+
+                    <button>
+                      1
+                    </button>
+
+                    <button className="selected-page">
+                      2
+                    </button>
+
+                    <button>
+                      3
+                    </button>
+
+                    <button>
+                      ›
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </section>
+
+            {/* RIGHT */}
+            <aside className="right">
+
+              {/* BANK CARD */}
+              <div className="bank-card">
+
+                <div className="card-chip">
+                  ▣
+                </div>
+
+                <div className="card-number">
+                  1234 5678 9012 3456
+                </div>
+
+                <div className="card-bottom">
+
+                  <div>
+                    <small>
+                      Card Holder
+                    </small>
+
+                    <b>
+                      Nello Vita
+                    </b>
+                  </div>
+
+                  <div className="master">
+
+                    <div className="circle red"></div>
+
+                    <div className="circle yellow"></div>
+
+                    <small>
+                      Master Card
+                    </small>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* QUICK PAYMENT */}
+              <div className="quick-payment">
+
+                <h3>
+                  Quick Payment
+                </h3>
+
+                <div className="payment">
+
+                  <div className="payment-user">
+
+                    <div className="user-icon"></div>
+
+                    <div>
+                      <b>
+                        Nadia Adjo
+                      </b>
+
+                      <small>
+                        09/09/2021
+                      </small>
+                    </div>
+
+                  </div>
+
+                  <strong>
+                    $ 12,568.60
+                  </strong>
+
+                </div>
+
+                <div className="payment">
+
+                  <div className="payment-user">
+
+                    <div className="user-icon"></div>
+
+                    <div>
+                      <b>
+                        Nadia Adjo
+                      </b>
+
+                      <small>
+                        09/09/2021
+                      </small>
+                    </div>
+
+                  </div>
+
+                  <strong>
+                    $ 12,568.60
+                  </strong>
+
+                </div>
+
+                <button className="transfer">
+                  New Transfer
+                </button>
+
+              </div>
+
+              {/* RECENT ACTIVITY */}
+              <div className="recent">
+
+                <h3>
+                  Recent Activity
+                </h3>
+
+                <div className="activity">
+
+                  <div className="activity-icon">
+                    ◉
+                  </div>
+
+                  <div>
+                    <b>
+                      Payment
+                    </b>
+
+                    <small>
+                      2 March 2021, 12:45 PM
+                    </small>
+                  </div>
+
+                  <strong>
+                    +$2000
+                  </strong>
+
+                </div>
+
+                <div className="activity">
+
+                  <div className="activity-icon">
+                    ▣
+                  </div>
+
+                  <div>
+                    <b>
+                      Subscription
+                    </b>
+
+                    <small>
+                      2 March 2021, 3:45 PM
+                    </small>
+                  </div>
+
+                  <strong>
+                    -$120
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </aside>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+  );
 }

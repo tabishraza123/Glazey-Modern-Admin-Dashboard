@@ -1,294 +1,723 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background:#f5f6fa;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f8;
+  color: #303354;
 }
 
-.banking{
-    padding:30px;
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f7f8;
 }
 
-/* ===========================
-   HEADER
-=========================== */
+/* ================= SIDEBAR ================= */
 
-.banking-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:30px;
+.sidebar {
+  width: 125px;
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 18px 16px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid #f0f0f0;
 }
 
-.banking-header h2{
-    font-size:30px;
-    color:#2d3561;
+.logo {
+  font-size: 17px;
+  font-weight: 800;
+  color: #34365b;
+  margin: 0 0 32px 19px;
 }
 
-.banking-header input{
-    width:320px;
-    height:45px;
-    border:1px solid #e5e5e5;
-    border-radius:8px;
-    padding:0 15px;
-    outline:none;
-    background:#fff;
+.logo span {
+  color: #f46c50;
 }
 
-/* ===========================
-   MAIN GRID
-=========================== */
-
-.banking-grid{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:25px;
-    margin-bottom:30px;
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-/* ===========================
-   BALANCE CARD
-=========================== */
-
-.balance-card{
-    background:#fff;
-    border-radius:12px;
-    padding:25px;
-    box-shadow:0 3px 10px rgba(0,0,0,.06);
+.menu-item {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 9px;
+  border-radius: 2px;
+  font-size: 8px;
+  color: #77778c;
+  cursor: pointer;
 }
 
-.balance-card h3{
-    color:#2d3561;
+.menu-icon {
+  width: 15px;
+  text-align: center;
+  font-size: 11px;
 }
 
-.balance-card p{
-    color:#999;
-    margin:10px 0;
+.menu-item.active {
+  background: #ffe9e5;
+  color: #f36c50;
 }
 
-.balance-card h1{
-    color:#2d3561;
-    font-size:34px;
+.upgrade {
+  position: absolute;
+  bottom: 69px;
+  left: 16px;
+  right: 16px;
+  height: 65px;
+  padding: 9px;
+  background: linear-gradient(135deg, #ff6d4e, #f4bf56);
+  color: white;
 }
 
-.profit{
-    color:#1abc9c;
-    font-weight:600;
+.upgrade-title {
+  font-size: 7px;
+  line-height: 10px;
+  font-weight: bold;
 }
 
-/* ===========================
-   CHART
-=========================== */
-
-.chart{
-    display:flex;
-    align-items:flex-end;
-    gap:15px;
-    height:170px;
-    margin:30px 0;
+.upgrade button {
+  margin-top: 5px;
+  background: white;
+  border: 0;
+  padding: 4px 10px;
+  color: #555;
+  font-size: 7px;
 }
 
-.bar{
-    width:28px;
-    background:#f5c85c;
-    border-radius:6px 6px 0 0;
+/* ================= MAIN ================= */
+
+.main {
+  margin-left: 125px;
+  width: calc(100% - 125px);
 }
 
-.h1{height:110px;}
-.h2{height:70px;}
-.h3{height:60px;}
-.h4{height:95px;background:#ff7655;}
-.h5{height:55px;}
-.h6{height:88px;}
-.h7{height:105px;background:#ff7655;}
-
-/* ===========================
-   INCOME BOX
-=========================== */
-
-.income-box{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.topbar {
+  height: 48px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
 }
 
-.income{
-    background:#f8f9fc;
-    padding:20px;
-    border-radius:10px;
+.search {
+  width: 187px;
+  height: 25px;
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: #f46c50;
 }
 
-.income h4{
-    color:#777;
-    margin-bottom:10px;
+.search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  margin-left: 5px;
+  font-size: 7px;
 }
 
-.income strong{
-    color:#2d3561;
-    font-size:24px;
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-/* ===========================
-   RIGHT SIDE
-=========================== */
-
-.card-box{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+.language {
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 7px 9px;
+  font-size: 7px;
 }
 
-/* BANK CARD */
-
-.bank-card{
-    background:linear-gradient(135deg,#323b72,#f7b84b);
-    color:#fff;
-    border-radius:15px;
-    padding:25px;
-    height:180px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
+.notification {
+  font-size: 13px;
+  color: #454765;
 }
 
-.bank-card h3{
-    letter-spacing:3px;
-    margin-bottom:15px;
+.profile {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-/* PAYMENT */
-
-.payment{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    box-shadow:0 3px 10px rgba(0,0,0,.06);
+.profile b {
+  display: block;
+  font-size: 7px;
 }
 
-.payment h3{
-    margin-bottom:20px;
-    color:#2d3561;
+.profile small {
+  display: block;
+  text-align: right;
+  color: #999;
+  font-size: 6px;
 }
 
-.pay-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 0;
-    border-bottom:1px solid #eee;
+.avatar {
+  width: 22px;
+  height: 22px;
+  background: #ddd;
 }
 
-.pay-item span{
-    color:#666;
+/* ================= CONTENT ================= */
+
+.content {
+  padding: 19px 15px 25px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.pay-item strong{
-    color:#2d3561;
+.content > h1 {
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 
-.payment button{
-    width:100%;
-    margin-top:20px;
-    padding:14px;
-    background:#ff7655;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.3s;
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(180px, 1fr);
+  gap: 14px;
 }
 
-.payment button:hover{
-    background:#ff5b38;
+.left,
+.right {
+  min-width: 0;
 }
 
-/* ===========================
-   TRANSACTION
-=========================== */
+/* ================= BALANCE ================= */
 
-.transaction-card{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    box-shadow:0 3px 10px rgba(0,0,0,.06);
+.balance-card {
+  height: 105px;
+  background: white;
+  display: flex;
+  padding: 13px;
 }
 
-.transaction-card .title{
-    margin-bottom:20px;
+.balance-info {
+  width: 42%;
 }
 
-.transaction-card h3{
-    color:#2d3561;
+.balance-info h3 {
+  font-size: 9px;
+  margin-bottom: 3px;
 }
 
-.transaction-card table{
-    width:100%;
-    border-collapse:collapse;
+.balance-info small {
+  font-size: 6px;
+  color: #999;
 }
 
-.transaction-card th{
-    text-align:left;
-    padding:15px;
-    background:#fafafa;
-    color:#666;
+.balance-info p {
+  margin-top: 11px;
+  font-size: 6px;
 }
 
-.transaction-card td{
-    padding:18px 15px;
-    border-top:1px solid #eee;
-    color:#555;
+.balance-info h2 {
+  font-size: 14px;
+  margin-top: 3px;
 }
 
-.transaction-card tbody tr:hover{
-    background:#fafafa;
+.growth {
+  margin-top: 3px;
+  color: #4bad6b;
+  font-size: 6px;
+  font-weight: bold;
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
-
-@media(max-width:992px){
-
-    .banking-grid{
-        grid-template-columns:1fr;
-    }
-
-    .banking-header{
-        flex-direction:column;
-        gap:20px;
-        align-items:flex-start;
-    }
-
-    .banking-header input{
-        width:100%;
-    }
-
+.chart {
+  flex: 1;
+  position: relative;
 }
 
-@media(max-width:768px){
-
-    .income-box{
-        grid-template-columns:1fr;
-    }
-
-    .transaction-card{
-        overflow-x:auto;
-    }
-
-    .transaction-card table{
-        min-width:700px;
-    }
-
-    .chart{
-        gap:8px;
-    }
-
-    .bar{
-        width:20px;
-    }
-
+.chart-tooltip {
+  position: absolute;
+  background: #34365b;
+  color: white;
+  padding: 6px 9px;
+  font-size: 7px;
+  top: 4px;
+  left: 48%;
+  transform: translateX(-50%);
+  z-index: 2;
 }
+
+.bars {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 13px 3px 4px;
+}
+
+.bar-group {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+}
+
+.bar-group i {
+  width: 17px;
+  background: #f5c85d;
+  display: block;
+}
+
+.bar-group.selected i,
+.bar-group:last-child i {
+  background: #f16a4e;
+}
+
+.bar-group span {
+  font-size: 5px;
+  color: #777;
+}
+
+/* ================= MONEY ================= */
+
+.money-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 1px;
+}
+
+.money-box {
+  height: 47px;
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+  gap: 9px;
+}
+
+.money-icon {
+  width: 21px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #34365b;
+  color: white;
+  font-size: 9px;
+}
+
+.money-box small {
+  display: block;
+  color: #aaa;
+  font-size: 6px;
+}
+
+.money-box strong {
+  display: block;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+/* ================= TRANSACTIONS ================= */
+
+.transactions {
+  background: white;
+  margin-top: 14px;
+}
+
+.section-heading {
+  height: 42px;
+  padding: 0 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-heading h3 {
+  font-size: 9px;
+}
+
+.filter {
+  font-size: 6px;
+  color: #999;
+}
+
+.transaction {
+  height: 39px;
+  border-top: 1px solid #f3f3f3;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 20px 25px;
+  align-items: center;
+  padding: 0 13px;
+  font-size: 6px;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.company-icon {
+  width: 17px;
+  height: 17px;
+  background: #dedfe1;
+  border-radius: 5px;
+}
+
+.transaction strong {
+  font-size: 6px;
+}
+
+.transaction span {
+  color: #aaa;
+}
+
+.transaction-icon,
+.dots {
+  color: #85859a;
+}
+
+.pagination {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 13px;
+}
+
+.pagination small {
+  color: #aaa;
+  font-size: 5px;
+}
+
+.pages {
+  display: flex;
+  gap: 3px;
+}
+
+.pages button {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background: #fff3f0;
+  color: #f16a4e;
+  font-size: 7px;
+}
+
+.pages .selected-page {
+  background: #f16a4e;
+  color: white;
+}
+
+/* ================= BANK CARD ================= */
+
+.bank-card {
+  height: 102px;
+  background: #35365b;
+  position: relative;
+  overflow: hidden;
+  padding: 13px;
+  color: white;
+}
+
+.bank-card::before {
+  content: "";
+  width: 110px;
+  height: 110px;
+  position: absolute;
+  right: -23px;
+  top: -38px;
+  background: #f5c95d;
+  border-radius: 50%;
+}
+
+.bank-card::after {
+  content: "";
+  width: 160px;
+  height: 80px;
+  position: absolute;
+  right: -25px;
+  bottom: -40px;
+  background: #f36b4d;
+  border-radius: 80px 80px 0 0;
+}
+
+.card-chip {
+  font-size: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-number {
+  margin-top: 15px;
+  font-size: 9px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 11px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-bottom small {
+  display: block;
+  font-size: 5px;
+}
+
+.card-bottom b {
+  font-size: 7px;
+}
+
+.master {
+  margin-right: 5px;
+  text-align: center;
+}
+
+.master .circle {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.master .red {
+  background: #f36b4d;
+}
+
+.master .yellow {
+  background: #f5c95d;
+  margin-left: -5px;
+}
+
+.master small {
+  font-size: 5px;
+}
+
+/* ================= QUICK PAYMENT ================= */
+
+.quick-payment {
+  background: white;
+  margin-top: 14px;
+  padding: 13px;
+}
+
+.quick-payment h3,
+.recent h3 {
+  font-size: 9px;
+  margin-bottom: 11px;
+}
+
+.payment {
+  background: #f8f8f8;
+  min-height: 43px;
+  margin-bottom: 7px;
+  padding: 7px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.payment-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-icon {
+  width: 12px;
+  height: 12px;
+  background: #ddd;
+  border-radius: 50%;
+}
+
+.payment-user > div:nth-child(2) {
+  flex: 1;
+  margin-left: 6px;
+}
+
+.payment b {
+  font-size: 6px;
+}
+
+.payment small {
+  display: block;
+  font-size: 5px;
+  color: #999;
+}
+
+.payment > strong {
+  font-size: 8px;
+  margin-left: 18px;
+  margin-top: 2px;
+}
+
+.transfer {
+  width: 100%;
+  height: 23px;
+  border: 0;
+  background: #f16a4e;
+  color: white;
+  font-size: 7px;
+}
+
+/* ================= RECENT ================= */
+
+.recent {
+  margin-top: 18px;
+}
+
+.activity {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.activity-icon {
+  width: 20px;
+  height: 20px;
+  background: #f16a4e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9px;
+}
+
+.activity b {
+  display: block;
+  font-size: 6px;
+}
+
+.activity small {
+  font-size: 5px;
+  color: #999;
+}
+
+.activity strong {
+  font-size: 6px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .quick-payment {
+    margin-top: 0;
+  }
+
+  .recent {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .sidebar {
+    width: 70px;
+    padding: 15px 8px;
+  }
+
+  .logo {
+    margin-left: 8px;
+    font-size: 13px;
+  }
+
+  .menu-item {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .menu-item span:last-child {
+    display: none;
+  }
+
+  .upgrade {
+    display: none;
+  }
+
+  .main {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
+
+  .topbar {
+    padding: 0 10px;
+  }
+
+  .search {
+    width: 130px;
+  }
+
+  .top-actions {
+    gap: 7px;
+  }
+
+  .language {
+    display: none;
+  }
+
+  .profile > div:first-child {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .balance-card {
+    height: auto;
+    min-height: 140px;
+    flex-direction: column;
+  }
+
+  .balance-info {
+    width: 100%;
+  }
+
+  .chart {
+    height: 90px;
+    margin-top: 10px;
+  }
+
+  .right {
+    display: block;
+  }
+
+  .quick-payment {
+    margin-top: 14px;
+  }
+
+  .transaction {
+    grid-template-columns: 1.5fr 1fr 20px 20px;
+  }
+
+  .transaction span {
+    display: none;
+  }
+}
+
